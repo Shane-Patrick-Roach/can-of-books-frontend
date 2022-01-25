@@ -14,15 +14,45 @@ Ever wnated to know what book has impacted Shane's life or Josh's life, well Can
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
-Name of feature: ________________________________
 
-Estimate of time needed to complete: _____
+### Lab 11
 
-Start time: _____
+#### Feature 1 
 
-Finish time: _____
+- Name of feature: Set up Repositories
 
-Actual time needed to complete: _____
+- Estimate of time needed to complete: 1 hour
+
+- Start time: 2:15
+
+- Finish time: 3:45
+
+- Actual time needed to complete: 1.5 hours
+
+#### Feature 2 
+
+- Name of feature: Storage
+
+- Estimate of time needed to complete: 2 hours
+
+- Start time: 3:45 
+
+- Finish time: 5:30
+
+- Actual time needed to complete: ~2hours
+
+#### Feature 3 
+
+- Name of feature: Book Component
+
+- Estimate of time needed to complete: 2 hours
+
+- Start time: 5:45 pm
+
+- Finish time: 7:45
+
+- Actual time needed to complete: 2 hours
+
 
 ## Estimates
 <!-- See below -->

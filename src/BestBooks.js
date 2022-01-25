@@ -56,7 +56,7 @@ class BestBooks extends React.Component {
           {booksToRender}
         </Carousel>
         ) : (
-          <h3>No Books Found :(</h3>
+          <h3>No Books Found 😱</h3>
         )}
 
         
