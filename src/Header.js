@@ -9,6 +9,10 @@ class Header extends React.Component {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>My Favorite Books</Navbar.Brand>
         <NavItem><Link to="/" className="nav-link">Home</Link></NavItem>
+        <NavItem><Link to="/Profile" className="nav-link">Profile</Link></NavItem>
+        <NavItem><Link to="/Login" className="nav-link">Login</Link></NavItem>
+        
+
         {/* TODO: if the user is logged in, render a navigation link to profile page */}
         {/* TODO: if the user is logged in, render the `LogoutButton` */}
       </Navbar>
