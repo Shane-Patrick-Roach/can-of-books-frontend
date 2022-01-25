@@ -37,7 +37,7 @@ class BestBooks extends React.Component {
     
     let booksToRender = this.state.books.map((book, idx) => 
       <Carousel.Item key={idx}>
-        <img src= "https://via.placeholder.com/400x550/333/808080%20C/O%20https://placeholder.com/" alt='hello'></img>
+        <img src= "https://via.placeholder.com/1200x550/333/808080%20C/O%20https://placeholder.com/" alt='hello'></img>
 
         <Carousel.Caption>
           <h3>{book.title}</h3>
