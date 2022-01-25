@@ -3,6 +3,9 @@ import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
+
+import Login from './Login'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -43,11 +46,11 @@ class App extends React.Component {
           
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
-            <Route path="/">
-              <BestBooks />
+            <Route exact path="/">
+              {this.state.user ? <BestBooks /> : <Login onLogin={this.loginHandler}/>}
             </Route>
-            <Route path="/Profile">
-              <Profile />
+            <Route exact path="/profile">
+              <Profile user={this.state.user}/>
             </Route>
             
           </Switch>

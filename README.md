@@ -53,6 +53,32 @@ Ever wnated to know what book has impacted Shane's life or Josh's life, well Can
 
 - Actual time needed to complete: 2 hours
 
+### Lab 12
+
+#### Feature 1 
+
+- Name of feature: Create New Book As User
+
+- Estimate of time needed to complete: 2 hours
+
+- Start time: 5:45 pm
+
+- Finish time: 7:45
+
+- Actual time needed to complete: 2 hours
+
+#### Feature 2 
+
+- Name of feature: Delete New Book As User
+
+- Estimate of time needed to complete: 2 hours
+
+- Start time: 5:45 pm
+
+- Finish time: 7:45
+
+- Actual time needed to complete: 2 hours
+
 
 ## Estimates
 <!-- See below -->
