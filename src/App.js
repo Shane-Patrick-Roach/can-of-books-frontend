@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
+import AddBookButton from './AddBookButton';
 
 import Login from './Login'
 
@@ -51,6 +52,7 @@ class App extends React.Component {
             </Route>
             <Route exact path="/profile">
               <Profile user={this.state.user}/>
+              <AddBookButton/>
             </Route>
             
           </Switch>
