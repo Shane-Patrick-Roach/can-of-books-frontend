@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Carousel } from 'react-bootstrap';
+import AddBookModal from './AddBookModal';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -13,6 +14,10 @@ class BestBooks extends React.Component {
   }
 
 
+
+
+
+
   getBooksInfo = async () => {
     console.log('error');
     try{let bookData = await axios.get('http://localhost:3001/books')
@@ -21,6 +26,17 @@ class BestBooks extends React.Component {
     this.setState({
       books: bookData.data
     })}catch(e){console.log(e.message)};
+    
+  }
+
+  makeBook = async (newBook) => {
+    let url = 'http://localhost:3001/books';
+    let bookResults = await axios.post(url, newBook);
+    console.log(bookResults.data);
+
+    this.setState({
+      books: [...this.state.books, bookResults.data]
+    })
   }
 
 
@@ -59,12 +75,7 @@ class BestBooks extends React.Component {
           <h3>No Books Found 😱</h3>
         )}
 
-        
-
-
-
-
-
+        <AddBookModal books={this.state.books} makeBook={this.makeBook}/>
 
       </>
     )

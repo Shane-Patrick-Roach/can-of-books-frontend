@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 
 
-export default class LoginButton extends Component {
+class LoginButton extends Component {
 
   constructor(props){
     super(props);
@@ -27,3 +27,5 @@ export default class LoginButton extends Component {
     )
   }
 }
+
+export default LoginButton;
