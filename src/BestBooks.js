@@ -45,6 +45,15 @@ class BestBooks extends React.Component {
 
   }
 
+  deleteBook = async (id) => {
+    try{
+      await axios.delete(`${SERVER}/books/${id}`)
+      this.getBooksInfo();
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
 
   componentDidMount() {
     this.getBooksInfo();
