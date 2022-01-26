@@ -13,8 +13,8 @@ class LoginForm extends Component {
     }
     this.props.onLogin(user)
   }
+  
   render() {
-    /* TODO: create a simple login form that collects username and and email, and lets parent component know when form has been submitted */
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Username

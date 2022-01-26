@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
-import AddBookButton from './AddBookButton';
+import AddBookModal from './AddBookModal';
 
 import Login from './Login'
 
@@ -49,10 +49,12 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/">
               {this.state.user ? <BestBooks /> : <Login onLogin={this.loginHandler}/>}
+              
             </Route>
             <Route exact path="/profile">
               <Profile user={this.state.user}/>
-              <AddBookButton/>
+              <AddBookModal/>
+              
             </Route>
             
           </Switch>
