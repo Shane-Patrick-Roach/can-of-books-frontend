@@ -4,6 +4,8 @@ import { Carousel, Button } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 import AddBookButton from './AddBookButton';
 
+const SERVER = process.env.REACT_APP_SERVER;
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -13,11 +15,12 @@ class BestBooks extends React.Component {
     }
   }
 
+  
 
   getBooksInfo = async () => {
     console.log('error');
     try {
-      let bookData = await axios.get('http://localhost:3001/books')
+      let bookData = await axios.get(`${SERVER}/books`)
       this.setState({
         books: bookData.data
       })
@@ -27,7 +30,7 @@ class BestBooks extends React.Component {
   }
 
   makeBook = async (newBook) => {
-    let url = 'http://localhost:3001/books';
+    let url = `${SERVER}/books`;
 
     try {
       let bookResults = await axios.post(url, newBook);
