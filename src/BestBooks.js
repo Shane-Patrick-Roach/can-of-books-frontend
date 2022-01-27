@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Carousel, Button } from 'react-bootstrap';
+import { Carousel, Button, Form } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 import AddBookButton from './AddBookButton';
+import UpdateBookButton from './UpdateBookButton';
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -12,7 +13,8 @@ class BestBooks extends React.Component {
     this.state = {
       books: [],
       showAddButton: true,
-      showUpdateForm: true
+      currentBook: {},
+      showUpdateForm: false
     }
   }
 
@@ -54,28 +56,30 @@ class BestBooks extends React.Component {
     }
   }
 
-  // updateBook = async (bookUpdate) => {
-  //   let url = `${SERVER}/books`;
-  //   let updatedBook = await axios.put(`${url}/${bookUpdate._id}`, bookUpdate);
-  //   let updatedBooks = this.state.books.map(currBook => currBook._id === updatedBook.data._id ? updatedBook.data : currBook);
-  //   this.setState({ books: updatedBooks })
-  // }
+  updateBook = async (bookUpdate) => {
+    let url = `${SERVER}/books`;
+    let updatedBook = await axios.put(`${url}/${bookUpdate._id}`, bookUpdate);
+    let updatedBooks = this.state.books.map(currBook => currBook._id === updatedBook.data._id ? updatedBook.data : currBook);
+    this.setState({ books: updatedBooks })
+    
+  }
 
-  // handleBookUpdate = (e) => {
-  //   e.preventDefault();
-  //   let bookUpdate = {
-  //       title: e.target.title.value || this.state.books.title,
-  //       description: e.target.description.value || this.book.description,
-  //       status: e.target.status.checked || this.book.status,
-  //       email: e.target.email.value || this.book.email,
-  //       __v: this.book.__v,
-  //       _id: this.book._id
-      
-  //   }
-  //   console.log(bookUpdate)
-  //   this.updateBook(bookUpdate);
-  // }
+  handleBookUpdate = (e) => {
+    e.preventDefault();
+    let bookUpdate = {
+      title: e.target.title.value || this.state.currentBook.title,
+      description: e.target.description.value || this.state.currentBook.description,
+      status: e.target.status.checked || this.state.currentBook.status,
+      email: e.target.email.value || this.state.currentBook.email,
+      __v: this.state.currentBook.__v,
+      _id: this.state.currentBook._id
 
+    }
+    console.log(bookUpdate)
+    this.updateBook(bookUpdate);
+  }
+
+  
 
   componentDidMount() {
     this.getBooksInfo();
@@ -93,27 +97,13 @@ class BestBooks extends React.Component {
         <Carousel.Caption>
           <h3>{book.title}</h3>
           {/* <Button onClick={() => this.updateBook(book._id)}>Update Book</Button> */}
-          <Button onClick={() => this.deleteBook(book._id)}>Remove Book</Button>
+          <Button onClick={() => this.deleteBook(book._id)}
+          >Remove Book</Button>
+          <Button onClick={()=> this.setState({ showUpdateForm: true, currentBook: book })}>Update Book</Button>
+
         </Carousel.Caption>
-{/* 
-        <Form onSubmit={this.handleBookUpdate}>
-          <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control type="text" placeholder={book.title}/>
-          </Form.Group>
-          <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control type="text" placeholder={book.description}/>
-          </Form.Group>
-          <Form.Group controlId="status">
-            <Form.Check type="checkbox" label="Status" />
-          </Form.Group>
-          <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="text" placeholder={book.email}/>
-          </Form.Group>
-          <Button type="submit">Submit Update</Button>
-        </Form> */}
+
+        
       </Carousel.Item>  
 
     )
@@ -134,6 +124,27 @@ class BestBooks extends React.Component {
 
         <BookFormModal books={this.state.books} />
         <AddBookButton user={this.props.user} makeBook={this.makeBook} />
+
+        {this.state.showUpdateForm && 
+        
+        <Form onSubmit={this.handleBookUpdate}>
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" placeholder={this.state.currentBook.title} />
+        </Form.Group>
+        <Form.Group controlId="description">
+          <Form.Label>Description</Form.Label>
+          <Form.Control type="text" placeholder={this.state.currentBook.description} />
+        </Form.Group>
+        <Form.Group controlId="status">
+          <Form.Check type="checkbox" label="Status" />
+        </Form.Group>
+        <Form.Group controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="text" placeholder={this.state.currentBook.email} />
+        </Form.Group>
+        <Button type="submit">Submit Update</Button>
+      </Form>}
 
 
 
