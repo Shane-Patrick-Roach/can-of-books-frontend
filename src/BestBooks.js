@@ -4,7 +4,7 @@ import { Carousel, Button, Form } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 import AddBookButton from './AddBookButton';
 import { withAuth0 } from '@auth0/auth0-react';
-// import axios from 'axios';
+
 
 
 const SERVER = process.env.REACT_APP_SERVER;
