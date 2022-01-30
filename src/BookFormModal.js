@@ -20,6 +20,7 @@ class BookFormModal extends React.Component {
     }
     console.log(newBook);
     this.props.makeBook(newBook);
+    this.props.closeModalHandle();
   }
 
 
