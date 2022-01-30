@@ -27,7 +27,7 @@ class BestBooks extends React.Component {
       const responseFromAuth0 = await this.props.auth0.getIdTokenClaims();
       //Super Duper Important 
       const jwt =  responseFromAuth0.__raw;
-      console.log(jwt);
+      //console.log(jwt);
       const config = {
         method: 'get',
         baseURL: process.env.REACT_APP_SERVER,
@@ -35,7 +35,7 @@ class BestBooks extends React.Component {
         headers: {"Authorization":  `Bearer ${jwt}`}
       }
       const bookResponse = await axios(config);
-      this.setState({book: bookResponse.data})
+      this.setState({books: bookResponse.data})
     }
     // try {
     //   let bookData = await axios.get(`${SERVER}/books`)
@@ -105,14 +105,13 @@ class BestBooks extends React.Component {
 
 
   render() {
-
+    //console.log(books)
     let booksToRender = this.state.books.map((book, idx) =>
-      <Carousel.Item key={idx}>
-        <img src="https://via.placeholder.com/1200x550/333/808080%20C/O%20https://placeholder.com/" alt='hello'></img>
+      <Carousel.Item key={idx} variant="dark">
+        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt='Books' className="d-block w-100"></img>
 
-        <Carousel.Caption>
+        <Carousel.Caption variant="dark">
           <h3>{book.title}</h3>
-          {/* <Button onClick={() => this.updateBook(book._id)}>Update Book</Button> */}
           <Button onClick={() => this.deleteBook(book._id)}
           >Remove Book</Button>
           <Button onClick={()=> this.setState({ showUpdateForm: true, currentBook: book })}>Update Book</Button>
@@ -128,14 +127,16 @@ class BestBooks extends React.Component {
 
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
         {this.state.books.length > 0 ? (
-          <Carousel>
+          <Carousel variant="dark">
             {booksToRender}
           </Carousel>
         ) : (
+          <>
+          <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
           <h3>No Books Found 😱</h3>
+          </>
         )}
 
         <BookFormModal books={this.state.books} />
